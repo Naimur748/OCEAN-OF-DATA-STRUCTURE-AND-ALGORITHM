@@ -1,13 +1,14 @@
 #include <iostream>
 #include <unordered_map>
+#include <vector>
 using namespace std;
 
-int firstNonRepeatingElement(vector<int>& arr){
+int firstNonRepeatingElement(const vector<int>& arr){
 
     unordered_map<int, int> freq;
 
     for(int num : arr){
-        freq[num]++
+        freq[num]++;
     }
 
     for(int num : arr){
@@ -26,9 +27,9 @@ int main(){
     int result = firstNonRepeatingElement(arr);
 
     if(result != -1){
-        cout<<"First non-repeating Element"<<result <<endl;
+        cout<<"First non-repeating Element: "<<result <<endl;
     }else{
-        cout<<"Not found Non repeating Element"<<endl;
+        cout<<"Not found Non repeating Element: "<<endl;
     }
 
 
