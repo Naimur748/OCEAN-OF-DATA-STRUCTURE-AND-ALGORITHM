@@ -2,7 +2,7 @@
 #include <unordered_set>
 using namespace std;
 
-void removeDuplicteElement(int arr[], int size){
+void removeDuplicateElement(int arr[], int size){
 
     unordered_set<int> seen;
 
@@ -21,7 +21,7 @@ int main(){
     int arr[] = {1, 2, 3, 4, 2, 5, 6,3};
     int size = sizeof(arr) / sizeof(arr[0]);
 
-    removeDuplicteElement(arr, size);
+    removeDuplicateElement(arr, size);
    
    
     
