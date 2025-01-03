@@ -1,3 +1,6 @@
+
+//https://chatgpt.com/c/67776b57-6e90-800e-9d9f-39193144fd69
+
 #include <iostream>
 using namespace std;
 
