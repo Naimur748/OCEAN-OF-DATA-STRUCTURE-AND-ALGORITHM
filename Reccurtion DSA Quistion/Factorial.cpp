@@ -27,6 +27,8 @@ return 0;
 */
 
 
+//https://chatgpt.com/c/677d0462-bbb8-800e-98e7-eaeec93abc46
+
 //Print sum 1 to n using reccurtion
 void sumOfReccurtion(int n, int s){
 
