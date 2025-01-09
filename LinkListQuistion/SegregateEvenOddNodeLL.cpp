@@ -64,6 +64,8 @@ Node* segregateEvenOdd(Node* head){
 
     return evenStart ? evenStart : oddStart;
 
+    
+
 }
 
 void printList(Node* head) {
