@@ -21,16 +21,57 @@
 
 
 
+// #include <iostream>
+// #include <algorithm>
+// #include <climits>
+// using namespace std;
+
+// int findMinDiff(int arr[], int n, int m){
+
+//     if (n < m) return -1;
+
+//     sort(arr, arr + n);
+
+//     int min_diff = INT_MAX;
+
+//     for(int i=0; i+m-1<n; i++){
+
+//         int diff = arr[i+m-1] - arr[i];
+
+//         min_diff = min(min_diff, diff);
+
+//     }
+
+//     return min_diff;
+
+// }
+
+
+// int main(){
+
+//     int arr[] = {7, 3, 2, 4, 9, 12, 56};
+//     int n  = sizeof(arr) / sizeof(arr[0]);
+
+//     int m = 3;
+
+//     cout<<"Minimum difference is " <<findMinDiff(arr, n, m);
+
+//     return 0;
+// }
+
+
+
 #include <iostream>
 #include <algorithm>
 #include <climits>
+
 using namespace std;
 
 int findMinDiff(int arr[], int n, int m){
 
-    if (n < m) return -1;
+    if(n<m) return -1;
 
-    sort(arr, arr + n);
+    sort(arr, arr+n);
 
     int min_diff = INT_MAX;
 
@@ -46,16 +87,16 @@ int findMinDiff(int arr[], int n, int m){
 
 }
 
-
 int main(){
 
-    int arr[] = {7, 3, 2, 4, 9, 12, 56};
-    int n  = sizeof(arr) / sizeof(arr[0]);
+    int arr[] = {4, 6, 3, 8, 1, 9, 22, 45};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
     int m = 3;
 
-    cout<<"Minimum difference is " <<findMinDiff(arr, n, m);
-
+    cout<<"Minimum different is: "<<findMinDiff(arr, n, m);
+   
     return 0;
-}
 
+
+}
