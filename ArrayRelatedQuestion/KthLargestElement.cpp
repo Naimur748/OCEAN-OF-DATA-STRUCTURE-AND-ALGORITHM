@@ -40,6 +40,10 @@ Constraints:
 #include <queue>
 using namespace std;
 
+
+/*
+
+
 pair<int,int> findKthLargestWithIndex(const vector<int>& nums, int k){
 
     priority_queue<pair<int,int>, vector<pair<int,int>>,greater<pair<int,int>>>minHeap;
@@ -50,6 +54,47 @@ pair<int,int> findKthLargestWithIndex(const vector<int>& nums, int k){
         if((int)minHeap.size() > k){
             minHeap.pop();
         }
+    }
+
+    return minHeap.top();
+}
+
+
+
+pair<int,int> findKthLargestWithIndex(const vector<int>& nums, int k){
+
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>>minHeap;
+
+    for(int i=0; i<(int)nums.size(); i++){
+        minHeap.push({nums[i], i});
+
+        if((int)minHeap.size() > k){
+            minHeap.pop();
+        }
+    }
+
+    return minHeap.top();
+
+}
+
+
+
+*/
+
+
+
+
+pair<int,int>findKthLargestWithIndex(const vector<int>&nums, int k){
+
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>minHeap;
+
+    for(int i=0; i<(int)nums.size(); i++){
+        minHeap.push({nums[i], i});
+
+        if((int)minHeap.size() > k){
+            minHeap.pop();
+        }
+
     }
 
     return minHeap.top();
