@@ -2,7 +2,7 @@
 using namespace std;
 
 
-void bubleSort(int arr[], int n){
+void bubbleSort(int arr[], int n){
 
     for(int i=0; i<n-1; i++){
 
@@ -27,7 +27,7 @@ int main(){
 
     int n = sizeof(arr) / sizeof(arr[0]);
 
-    bubleSort(arr, n);
+    bubbleSort(arr, n);
 
     //Final array print bellow
     for(int i=0; i<n; i++){

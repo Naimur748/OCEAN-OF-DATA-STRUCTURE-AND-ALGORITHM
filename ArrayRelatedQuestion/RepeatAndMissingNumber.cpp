@@ -70,9 +70,10 @@ vector<int> findRepeatAndMissing(vector<int>& nums){
     long long n = nums.size();
 
     long long expectedSum = n * (n+1) / 2;
-    long long expectedSquareSum = n * (n+1) * (2*n+2) / 6;
+    long long expectedSquareSum = n * (n+1) * (2*n+1) / 6;
 
-    long long actualSum = 0, actualSquareSum = 0;
+    long long actualSum = 0;
+    long long actualSquareSum = 0;
 
     for(int num : nums){
         actualSum += (long long) num;

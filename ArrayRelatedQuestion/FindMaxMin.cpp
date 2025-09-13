@@ -74,24 +74,48 @@
 #include <iostream>
 using namespace std;
 
+// void findMaxMin(int arr[], int n){
+
+//     int max = arr[0];
+//     int min = arr[0];
+
+//     for(int i=1; i<n; i++){
+//         if(arr[i] > max){
+//             max = arr[i];
+//         }
+
+//         if(arr[i] < min){
+//             min = arr[i];
+//         }
+//     }
+
+//     cout<<"Maximum is:"<<max<<endl;
+//     cout<<"Mimimum is:"<<min<<endl;
+// }
+
+
+
 void findMaxMin(int arr[], int n){
 
-    int max = arr[0];
-    int min = arr[0];
+    int maxVal = arr[0];
+    int minVal = arr[0];
 
-    for(int i=1; i<n; i++){
-        if(arr[i] > max){
-            max = arr[i];
+    for(int i=0; i<n; i++){
+        if(arr[i]>maxVal){
+            maxVal = arr[i];
+
         }
 
-        if(arr[i] < min){
-            min = arr[i];
+        if(arr[i]<minVal){
+            minVal = arr[i];
         }
     }
 
-    cout<<"Maximum is:"<<max<<endl;
-    cout<<"Mimimum is:"<<min<<endl;
+    cout<<"max is: "<<maxVal<<endl;
+    cout<<"Min is: "<<minVal<<endl;
 }
+
+
 
 int main(){
     
