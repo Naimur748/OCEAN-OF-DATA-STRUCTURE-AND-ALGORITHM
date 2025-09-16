@@ -35,37 +35,68 @@ using namespace std;
 
 
 
-bool compareForLargestNumber(const string &plateA, const string &plateB){
+// bool compareForLargestNumber(const string &plateA, const string &plateB){
 
-    return plateA + plateB > plateB + plateA;
-}
+//     return plateA + plateB > plateB + plateA;
+// }
+
+
+
+
+// string createLargestDisplayNumber(vector<int>& carNumber){
+
+//     vector<string> numberPlate;
+//     numberPlate.reserve(carNumber.size());
+
+//     for(int number : carNumber){
+//         numberPlate.push_back(to_string(number));
+//     }
+
+//     sort(numberPlate.begin(), numberPlate.end(), compareForLargestNumber);
+//      if (numberPlate[0] == "0") return "0";
+
+//     string largestNumber;
+//     for(const string &plate : numberPlate){
+
+//         largestNumber += plate;
+
+//     }
+
+//     return largestNumber;
+
+
+// }
+
+
+
 
 
 
 
 string createLargestDisplayNumber(vector<int>& carNumber){
 
-    vector<string> numberPlate;
-    numberPlate.reserve(carNumber.size());
+    vector<string> nums;
 
-    for(int number : carNumber){
-        numberPlate.push_back(to_string(number));
-    }
-
-    sort(numberPlate.begin(), numberPlate.end(), compareForLargestNumber);
-     if (numberPlate[0] == "0") return "0";
-
-    string largestNumber;
-    for(const string &plate : numberPlate){
-
-        largestNumber += plate;
+    for(int n : carNumber){
+        nums.push_back(to_string(n));
 
     }
 
-    return largestNumber;
+    sort(nums.begin(), nums.end(), [](string &a, string &b){
+        return a + b > b + a;
 
+    });
 
+    if(nums[0] == "0") return "0";
+
+    string result;
+    for(string &s :nums){
+        result += s;
+    }
+
+    return result;
 }
+
 
 
 
