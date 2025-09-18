@@ -32,29 +32,62 @@ using namespace std;
 
 
 
-int longestSubarray(vector<int> &arr, int k){
+// int longestSubarray(vector<int> &arr, int k){
 
-    int maxLength = 0;
-// Updated version - testing git commit
+//     int maxLength = 0;
+// // Updated version - testing git commit
 
-    for(int start=0; start<arr.size(); start++){
+//     for(int start=0; start<arr.size(); start++){
 
-        int sum = 0;
+//         int sum = 0;
 
-        for(int end=start; end<arr.size(); end++){
+//         for(int end=start; end<arr.size(); end++){
             
-            sum = (sum + arr[end]) % k;
+//             sum = (sum + arr[end]) % k;
 
-            if(sum == 0){
-                int length = end - start + 1;
-                maxLength = max(maxLength, length);
-            }
+//             if(sum == 0){
+//                 int length = end - start + 1;
+//                 maxLength = max(maxLength, length);
+//             }
 
 
+//         }
+//     }
+
+//     return maxLength;
+// }
+
+
+
+
+int longestSubarray(const vector<int>& arr, int k){
+
+    unordered_map<int, int> first;
+    first.reserve(arr.size() * 2);
+
+    first[0] = -1;
+
+    long long prefix = 0;
+    int best = 0;
+
+    for(int i=0; i<(int)arr.size(); ++i){
+
+        prefix += arr[i];
+
+        int rem = (int)(prefix % k + k) % k;
+
+        if(!first.count(rem)){
+
+            first[rem] = i;
+
+        }else{
+
+            int length = i - first[rem];
+            best = max(best, length);
         }
     }
 
-    return maxLength;
+    return best;
 }
 
 
@@ -69,7 +102,7 @@ int main(){
     int friends = 3;
 
     int result = longestSubarray(expenses, friends);
-    cout << "Maximum number of days expenses can be equally divided among friends: "
+    cout << "Longest subarray is: "
          << result << endl;
     return 0;
 
