@@ -68,7 +68,7 @@ int longestSubarray(const vector<int>& arr, int k){
     first[0] = -1;
 
     long long prefix = 0;
-    int best = 0;
+    int maxSub = 0;
 
     for(int i=0; i<(int)arr.size(); ++i){
 
@@ -83,11 +83,11 @@ int longestSubarray(const vector<int>& arr, int k){
         }else{
 
             int length = i - first[rem];
-            best = max(best, length);
+            maxSub = max(maxSub, length);
         }
     }
 
-    return best;
+    return maxSub;
 }
 
 
