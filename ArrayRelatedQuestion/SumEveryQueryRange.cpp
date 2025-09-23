@@ -80,7 +80,14 @@ int main(){
     
 }
 
-*/
+
+
+
+
+
+
+
+
 
 
 int block;
@@ -135,6 +142,71 @@ void queryResults(int a[], int n, Query q[], int m){
 
 
     }
+
+
+}
+
+
+
+
+
+*/
+
+int block;
+
+struct Query{
+    int L , R;
+};
+
+bool compare(Query a, Query b){
+    if(a.L/block != b.L/block){
+        return a.L/block < b.L/block;
+        return a.R < b.R;
+    }
+};
+
+
+void queryResults(int a[], int n, Query q[], int m){
+
+    block = (int) sqrt(n);
+
+    sort(q, q+m, compare);
+
+    int currL=0, currR=0;
+    int currSum = 0;
+
+    for(int i=0; i<m; i++){
+
+        int L = q[i].L;
+        int R = q[i].R;
+
+        while(currL < L){
+            currSum -= a[currL];
+            currL++;
+        }
+
+        while(currL > L){
+            currL--;
+            currSum += a[currL];
+
+        }
+
+        while(currR <= R){
+            currSum += a[currR];
+            currR++;
+            
+        }
+
+        while(currR > R + 1){
+            currR--;
+            currSum -= a[currR];
+        }
+
+        cout << "Sum of [" << L << ", " << R << "] = " << currSum << "\n";
+
+    }
+
+
 
 
 }
