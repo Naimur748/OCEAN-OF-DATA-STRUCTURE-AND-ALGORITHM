@@ -5,6 +5,12 @@ using namespace std;
 
 
 
+/*
+
+
+
+
+
 // Function Get Max Value.
 int getMaxValue(const vector<int>& numbers){
 
@@ -64,6 +70,60 @@ void radixSort(vector<int>& numbers){
     }
 }
 
+
+*/
+
+int getMaxValue(vector<int>& numbers){
+
+    int maxValue = 1;
+    
+    for(int num : numbers){
+        if(maxValue < num){
+            maxValue = num;
+        }
+    }
+
+    return maxValue;
+};
+
+void countSortByDigit(vector<int>& numbers, int digitPlace){
+
+    int size = numbers.size();
+    vector<int> sortedNumber(size);
+    vector<int> count(10, 0);
+
+    for(int num : numbers){
+        int digit = (num / digitPlace) % 10;
+        count[digit]++;
+    }
+
+    for(int i = 1; i < 10; i++){
+        count[i] += count[i - 1];
+    }
+
+    for(int i = size - 1; i >= 0; i--){
+        int digit = (numbers[i] / digitPlace) % 10;
+       sortedNumber[count[digit] - 1] = numbers[i];
+       count[digit]--;
+    }
+
+    for(int i = 0; i < size; i++){
+        numbers[i] = sortedNumber[i];
+    }
+
+};
+
+
+
+void radixSort(vector<int>& numbers){
+    int maxValue =  getMaxValue(numbers);
+
+    for(int digitPlace = 1; maxValue / digitPlace > 0; digitPlace *= 10){
+        countSortByDigit(numbers, digitPlace);
+    }
+
+
+};
 
 int main() {
     vector<int> numbers = {170, 45, 75, 90, 802, 24, 2, 66};
