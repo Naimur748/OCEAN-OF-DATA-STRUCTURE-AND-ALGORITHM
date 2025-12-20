@@ -7,9 +7,9 @@ public:
 
     bool isSafe(vector<string>& board, int row, int col, int n){
         // Horizontal (optional)
-        for(int j = 0; j < n; j++){
-            if(board[row][j] == 'Q') return false;
-        }
+        // for(int j = 0; j < n; j++){
+        //     if(board[row][j] == 'Q') return false;
+        // }
 
         // Vertical: 
         for(int i = 0; i < row; i++){
