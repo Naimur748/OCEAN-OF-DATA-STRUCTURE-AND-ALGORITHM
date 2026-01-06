@@ -1,77 +1,69 @@
-
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Solution {
-    public:
+public:
 
-    bool isSafe(int node, int color[], bool graph[101][101], int V, int c){
-        for(int k = 0; k < V; k++){
-            if(graph[node][k] && color[k]== c){
+    bool isSafe(int node, int color[], vector<vector<int>> &graph, int v, int c) {
+        for(int k = 0; k < v; k++) {
+            if(graph[node][k] && color[k] == c)
                 return false;
-            }
-            return true;
         }
+        return true;
     }
 
-    bool solve(int node, int color[], bool graph[101][101], int V, int m){
-        if(node == V)
+    bool solve(int node, int color[], vector<vector<int>> &graph, int v, int m) {
+        if(node == v)
             return true;
 
-            for(int c = 1; c <= m; c++){
-                if(isSafe(node, color, graph, V, c)){
-                    color[node] = c;
+        for(int c = 1; c <= m; c++) {
+            if(isSafe(node, color, graph, v, c)) {
+                color[node] = c;
 
-                    if(solve(node + 1, color, graph, V, m))
-                        return true;
+                if(solve(node + 1, color, graph, v, m))
+                    return true;
 
-                        color[node] = 0;
-
-                }
+                color[node] = 0; // backtrack
             }
-            return false;
+        }
+        return false;
     }
 
-    bool graphColoring(bool graph[101][101], int m, int V){
-      int color[V];
+    bool graphColoring(int v, vector<vector<int>> &edges, int m) {
 
-      for(int i=0; i < V; i++)
-        color[i] = 0;
+        // Edge list → Adjacency Matrix
+        vector<vector<int>> graph(v, vector<int>(v, 0));
+        for(auto &e : edges) {
+            graph[e[0]][e[1]] = 1;
+            graph[e[1]][e[0]] = 1;
+        }
 
-        return solve(0, color, graph, V, m);
+        int color[v];
+        for(int i = 0; i < v; i++)
+            color[i] = 0;
 
-   }
-
-
+        return solve(0, color, graph, v, m);
+    }
 };
 
 int main() {
-    Solution sol;
+    Solution obj;
 
-    // 🔹 Example graph
-    int V = 4;      // vertex সংখ্যা
-    int m = 3;      // max রঙ সংখ্যা
+    int v = 4;   // number of vertices
+    int m = 3;   // number of colors
 
-    // 🔹 adjacency matrix তৈরি
-    bool graph[101][101] = {0};
+    // Edge list (undirected graph)
+    vector<vector<int>> edges = {
+        {0, 1},
+        {0, 2},
+        {1, 2},
+        {1, 3}
+    };
 
-    // edges
-    int edges[][2] = { {0,1}, {1,3}, {2,3}, {3,0}, {0,2} };
-    int E = 5; // edges সংখ্যা
-
-    // adjacency matrix populate করা
-    for(int i = 0; i < E; i++) {
-        int u = edges[i][0];
-        int v = edges[i][1];
-        graph[u][v] = true;
-        graph[v][u] = true; // undirected
-    }
-
-    // 🔹 check graph coloring
-    if(sol.graphColoring(graph, m, V))
-        cout << "Graph can be colored with " << m << " colors.\n";
+    if(obj.graphColoring(v, edges, m))
+        cout << "Graph coloring is POSSIBLE\n";
     else
-        cout << "Graph cannot be colored with " << m << " colors.\n";
+        cout << "Graph coloring is NOT POSSIBLE\n";
 
     return 0;
 }
