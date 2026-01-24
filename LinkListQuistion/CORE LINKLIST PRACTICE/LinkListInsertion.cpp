@@ -11,6 +11,42 @@ struct Node{
     }
 };
 
+// void insertAtEnd(Node*& head, int val){
+
+//     Node* newNode = new Node(val);
+
+//     if(head == nullptr){
+//         head = newNode;
+//         return;
+//     }
+
+//     Node* temp = head;
+//     while(temp->next != nullptr){
+//         temp = temp->next;
+//     }
+//     temp->next = newNode;
+
+// };
+
+
+
+// void insertAtEnd(Node*& head, int val){
+
+//     Node* newNode = new Node(val);
+
+//     if(head == nullptr){
+//         head = newNode;
+//         return;
+//     }
+
+//     Node* temp = head;
+//     while(temp->next != nullptr){
+//         temp = temp->next;
+//     }
+//     temp->next = newNode;
+
+// }
+
 void insertAtEnd(Node*& head, int val){
 
     Node* newNode = new Node(val);
@@ -21,12 +57,9 @@ void insertAtEnd(Node*& head, int val){
     }
 
     Node* temp = head;
-    while(temp->next != nullptr){
-        temp = temp->next;
-    }
-    temp->next = newNode;
-
-};
+    newNode->next = head;
+    head = newNode;
+}
 
 void printList(Node* head){
     Node* temp = head;
