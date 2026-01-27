@@ -11,23 +11,24 @@ struct Node {
 };
 
 void removeLoop(Node* head){
-    Node* slow = head;
-    Node* fast = head;
-    //Detect loop using flayed cycle
-    while(fast != nullptr && fast->next != nullptr){
-        slow = slow->next;
-        fast = fast->next->next;
-        if(slow == fast) break;
-    }
+    //Fast find is any loop in link list
+   Node* slow = head;
+   Node* fast = head;
+   while(fast != nullptr && fast->next != nullptr){
+    slow = slow->next;
+    fast = fast->next->next;
+    if(slow == fast) break;
+    
+   }
 
-    if(slow != fast) return;
+   if(slow != fast) return;
 
-    slow = head;
-    while(slow->next != fast->next){
-        slow = slow->next;
-        fast = fast->next;
-    }
-    fast->next = nullptr;
+   slow = head;
+   while(slow->next != fast->next){
+    slow = slow->next;
+    fast = fast->next;
+   }
+   fast->next = nullptr;
 }
 
 void printList(Node* head) {
