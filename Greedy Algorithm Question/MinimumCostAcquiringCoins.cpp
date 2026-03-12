@@ -21,5 +21,5 @@ int main(){
 
     cout << "Minimum cost to acquire all coins: " << cost << endl;
 
-    return 0;
+    return 0; 
 }
