@@ -45,11 +45,11 @@ class Solution{
 };
 
 int main(){
-    
+
     Solution sol;
     string s;
     cout << "Enter string: ";
-    getline(cin, s);  // পুরো লাইনের ইনপুট নেওয়া হচ্ছে
+    getline(cin, s);  
     cout << "Longest Palindromic Substring: " << sol.longestPalindrome(s) << endl;
     return 0;
 

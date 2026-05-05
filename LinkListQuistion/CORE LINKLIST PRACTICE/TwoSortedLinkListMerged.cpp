@@ -29,6 +29,14 @@ Node* mergetSortedList(Node*& a, Node*& b){
 
         tail = tail->next;
     }
+
+    //Attach remaining node
+    if(a != nullptr)
+        tail->next = a;
+    else
+        tail->next = b;
+
+    return dummy.next;
 }
 int main(){
      // Hardcoded sorted list A
