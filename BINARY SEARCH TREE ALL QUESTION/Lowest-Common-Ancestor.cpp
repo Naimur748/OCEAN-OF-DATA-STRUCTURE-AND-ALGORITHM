@@ -15,7 +15,7 @@ struct TreeNode{
 };
 
 //Functon for find LCA
-TreeNode* loweseCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q){
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q){
 
     while(root != NULL){
 
@@ -68,7 +68,7 @@ int main(){
    if(lca != NULL){
     cout << "Lowest Common Ancestor: " << lca->val << endl;
 
-   }esle{
+   }else{
     cout << "LCA not found" << endl;
 
    }
